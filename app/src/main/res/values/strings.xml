@@ -16,11 +16,16 @@
     <string name="fragment_request_search">Search</string>
     <string name="fragment_request_post_id">Post id</string>
     <string name="fragment_request_invalid_input">Invalid input, please enter a valid id.</string>
-    <string name="first_name_recomended">First Name (recomended)</string>
-    <string name="last_name_recomended">Last Name (recomended)</string>
+    <string name="first_name_recomended">First Name (recommended)</string>
+    <string name="last_name_recomended">Last Name (recommended)</string>
     <string name="log_in">LOG IN</string>
     <string name="sign_up">SIGN UP</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="terms_and_conditions">By joining you agree to our Terms and Conditions</string>
+    <!--    <string name="app_name">Training</string>-->
 
 </resources>

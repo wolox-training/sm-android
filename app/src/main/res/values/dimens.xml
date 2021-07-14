@@ -45,6 +45,6 @@
     <dimen name="font_big">22sp</dimen>
     <dimen name="font_huge">24sp</dimen>
 
-
     <!-- Add your custom dimens here -->
+    <dimen name="spacing_test">115dp</dimen>
 </resources>

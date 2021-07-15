@@ -18,4 +18,8 @@ object Extras {
     object ViewPager {
         const val FAVOURITE_COLOR_KEY = "FAVOURITE_COLOR_KEY"
     }
+
+    object Const {
+        const val URL_WOLOX = "https://www.wolox.com.ar"
+    }
 }

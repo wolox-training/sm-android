@@ -19,8 +19,7 @@ class LoginPresenter @Inject constructor(private val userSession: UserSession) :
                     userSession.username = user
                     userSession.password = password
 
-                    // For test success login
-                    view?.showSuccessMessage()
+                    view?.goToHome()
                 } else view?.showErrorEmptyPassword()
             } else view?.showErrorEmail()
         } else view?.showErrorEmptyUsername()
@@ -41,5 +40,13 @@ class LoginPresenter @Inject constructor(private val userSession: UserSession) :
      */
     fun isValidEmail(email: String): Boolean {
         return Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    }
+
+    fun onSignUpButtonClicked() {
+        view?.goToSignUp()
+    }
+
+    fun onTermsAndConditionClicked() {
+        view?.showTermsAndConditions()
     }
 }

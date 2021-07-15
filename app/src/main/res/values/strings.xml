@@ -32,6 +32,8 @@
     <string name="incorrect_format_email">Incorrect format for Email</string>
     <string name="test_color_blue">Blue</string>
     <string name="success">Success</string>
+    <string name="signup_fragment">SignUp Fragment</string>
+    <string name="home_fragment">Home Fragment</string>
     <!--    <string name="app_name">Training</string>-->
 
 </resources>

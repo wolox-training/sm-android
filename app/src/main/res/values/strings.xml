@@ -25,7 +25,13 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="terms_and_conditions">By joining you agree to our Terms and Conditions</string>
+    <string name="terms_and_conditions">By joining you agree to our <u>Terms &amp; Conditions</u> </string>
+    <string name="fields_requerided">All fields are requerided</string>
+    <string name="username_requerided">Username is requerided</string>
+    <string name="passwrod_requerided">Password is requerided</string>
+    <string name="incorrect_format_email">Incorrect format for Email</string>
+    <string name="test_color_blue">Blue</string>
+    <string name="success">Success</string>
     <!--    <string name="app_name">Training</string>-->
 
 </resources>

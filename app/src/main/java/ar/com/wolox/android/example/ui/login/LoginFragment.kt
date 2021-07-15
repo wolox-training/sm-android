@@ -52,13 +52,11 @@ class LoginFragment private constructor() : WolmoFragment<FragmentLoginBinding, 
     }
 
     override fun goToHome() {
-        val intent = Intent(context, HomeActivity::class.java)
-        startActivity(intent)
+        HomeActivity.start(requireContext())
     }
 
     override fun goToSignUp() {
-        val intent = Intent(context, SignUpActivity::class.java)
-        startActivity(intent)
+        SignUpActivity.start(requireContext())
     }
 
     companion object {

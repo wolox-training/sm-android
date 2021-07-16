@@ -8,7 +8,11 @@ interface LoginView {
 
     fun showErrorEmptyPassword()
 
-    fun showSuccessMessage()
-
     fun setCredentials(username: String, password: String)
+
+    fun showTermsAndConditions()
+
+    fun goToHome()
+
+    fun goToSignUp()
 }

@@ -1,8 +1,12 @@
 package ar.com.wolox.android.example.ui.login
 
-import android.widget.Toast
+import android.content.Intent
+import android.net.Uri
 import ar.com.wolox.android.R
 import ar.com.wolox.android.databinding.FragmentLoginBinding
+import ar.com.wolox.android.example.ui.home.HomeActivity
+import ar.com.wolox.android.example.ui.signup.SignUpActivity
+import ar.com.wolox.android.example.utils.Extras
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 
 class LoginFragment private constructor() : WolmoFragment<FragmentLoginBinding, LoginPresenter>(), LoginView {
@@ -17,6 +21,10 @@ class LoginFragment private constructor() : WolmoFragment<FragmentLoginBinding, 
         with(binding) {
             buttonLogIn.setOnClickListener {
                 presenter.onLoginButtonClicked(edtEmail.text.toString().trim(), edtPassword.text.toString().trim())
+            }
+            textTermsAndConditions.setOnClickListener { presenter.onTermsAndConditionClicked() }
+            buttonSignUp.setOnClickListener {
+                presenter.onSignUpButtonClicked()
             }
         }
     }
@@ -33,14 +41,22 @@ class LoginFragment private constructor() : WolmoFragment<FragmentLoginBinding, 
         binding.edtPassword.error = getString(R.string.passwrod_requerided)
     }
 
-    // For test
-    override fun showSuccessMessage() {
-        Toast.makeText(context, getString(R.string.success), Toast.LENGTH_SHORT).show()
-    }
-
     override fun setCredentials(username: String, password: String) {
         binding.edtEmail.setText(username)
         binding.edtPassword.setText(password)
+    }
+
+    override fun showTermsAndConditions() {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(Extras.Const.URL_WOLOX))
+        startActivity(intent)
+    }
+
+    override fun goToHome() {
+        HomeActivity.start(requireContext())
+    }
+
+    override fun goToSignUp() {
+        SignUpActivity.start(requireContext())
     }
 
     companion object {

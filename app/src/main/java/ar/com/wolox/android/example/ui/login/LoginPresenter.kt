@@ -35,11 +35,13 @@ class LoginPresenter @Inject constructor(
         networkRequest(loginRepository.doLogin(loginBody)) {
             onResponseSuccessful { body, headers ->
 
-                userSession.username = loginBody.email
-                userSession.password = loginBody.password
-                userSession.accessToken = headers.get(Extras.Headers.ACCESS_TOKEN)
-                userSession.uid = headers.get(Extras.Headers.CLIENT)
-                userSession.client = headers.get(Extras.Headers.UID)
+                userSession.apply {
+                    username = loginBody.email
+                    password = loginBody.password
+                    accessToken = headers.get(Extras.Headers.ACCESS_TOKEN)
+                    uid = headers.get(Extras.Headers.CLIENT)
+                    client = headers.get(Extras.Headers.UID)
+                }
 
                 view?.goToHome()
 

@@ -13,6 +13,9 @@ object Extras {
     object UserLogin {
         const val USERNAME = "username"
         const val PASSWORD = "password"
+        const val ACCESS_TOKEN = "access_token"
+        const val UID = "uid"
+        const val CLIENT = "client"
     }
 
     object ViewPager {
@@ -21,5 +24,11 @@ object Extras {
 
     object Const {
         const val URL_WOLOX = "https://www.wolox.com.ar"
+    }
+
+    object Headers {
+        const val ACCESS_TOKEN = "Access-Token"
+        const val CLIENT = "Client"
+        const val UID = "Uid"
     }
 }

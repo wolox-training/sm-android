@@ -1,11 +1,19 @@
 package ar.com.wolox.android.example.ui.login
 
 import android.util.Patterns
+import ar.com.wolox.android.example.model.LoginBody
+import ar.com.wolox.android.example.network.builder.networkRequest
+import ar.com.wolox.android.example.network.repository.LogInRepository
+import ar.com.wolox.android.example.utils.Extras
 import ar.com.wolox.android.example.utils.UserSession
-import ar.com.wolox.wolmo.core.presenter.BasePresenter
+import ar.com.wolox.wolmo.core.presenter.CoroutineBasePresenter
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class LoginPresenter @Inject constructor(private val userSession: UserSession) : BasePresenter<LoginView>() {
+class LoginPresenter @Inject constructor(
+    private val userSession: UserSession,
+    private val loginRepository: LogInRepository
+) : CoroutineBasePresenter<LoginView>() {
 
     /**
      * Chequea si el usarname y password cumplen las condiciones para ir a la siguiente pantalla.
@@ -16,13 +24,33 @@ class LoginPresenter @Inject constructor(private val userSession: UserSession) :
             if (isValidEmail(user)) {
                 if (password.isNotEmpty()) {
 
-                    userSession.username = user
-                    userSession.password = password
+                    doLogin(LoginBody(user, password))
 
-                    view?.goToHome()
                 } else view?.showErrorEmptyPassword()
             } else view?.showErrorEmail()
         } else view?.showErrorEmptyUsername()
+    }
+
+    fun doLogin(loginBody: LoginBody) = launch {
+        networkRequest(loginRepository.doLogin(loginBody)) {
+            onResponseSuccessful { body, headers ->
+
+                userSession.apply {
+                    username = loginBody.email
+                    password = loginBody.password
+                    accessToken = headers.get(Extras.Headers.ACCESS_TOKEN)
+                    uid = headers.get(Extras.Headers.CLIENT)
+                    client = headers.get(Extras.Headers.UID)
+                }
+
+                view?.goToHome()
+
+                // For test to get data
+                val nickName = body?.data?.nickname
+            }
+            onResponseFailed { responseBody, i -> }
+            onCallFailure { }
+        }
     }
 
     /**
